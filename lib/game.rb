@@ -47,15 +47,19 @@ class Game
   end
 
   def turn
-    if @turn == "1"
-      puts "Player 1, take your turn."
-      self.player_1.gets("1")
-      @turn = "2"
-    elsif @turn == "2"
-      puts "Player 2, take your turn."
-      self.player_2.gets("2")
-      @turn = "1"
+    player = current_player
+    input = player.move(board)
+    if !board.valid_move?(input)
+      turn
     end
+    board.update(input, player) if !board.taken?(input)
+  end
+
+  def play
+    while !won? && !over?
+      turn
+    end
+    puts (draw? ? "Cat's Game!" : "Congratulations #{winner}!")
   end
 
 end
