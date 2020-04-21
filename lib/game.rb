@@ -46,4 +46,16 @@ class Game
     board.cells[won?.first] unless !won?
   end
 
+  def turn
+    if @turn == "1"
+      puts "Player 1, take your turn."
+      self.player_1.gets("1")
+      @turn = "2"
+    elsif @turn == "2"
+      puts "Player 2, take your turn."
+      self.player_2.gets("2")
+      @turn = "1"
+    end
+  end
+
 end
