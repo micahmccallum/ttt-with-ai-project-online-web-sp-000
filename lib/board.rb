@@ -26,20 +26,20 @@ class Board
   end
 
   def taken?(input)
-    ["X", "O"].include?(self.position(input)) ? true : false
+    Player::TOKENS.include?(self.position(input)) ? true : false
   end
 
   def full?
-    @cells.all? {|index| self.taken?(index) }
+    self.turn_count == 9
   end
 
   def turn_count
-    (@cells.find_all {|cell| ["X", "O"].include?(cell)}).count
+    (@cells.find_all {|cell| Player::TOKENS.include?(cell)}).count
   end
 
   def valid_move?(input)
     int = Integer(input) rescue false
-    int.between?(0, 8) && !self.taken?(input) if int
+    int.between?(1, 9) && !self.taken?(input) if int
   end
 
   def update(input, player)

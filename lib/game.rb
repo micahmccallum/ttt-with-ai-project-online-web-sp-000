@@ -25,7 +25,7 @@ class Game
   end
 
   def won?
-    win = nil
+    win = false
     WIN_COMBINATIONS.each do |combo|
       win = combo if @board.cells[combo[0]] == @board.cells[combo[1]] &&
                      @board.cells[combo[0]] == @board.cells[combo[2]] &&
@@ -55,10 +55,11 @@ class Game
   end
 
   def play
-    while !self.won? && !self.over?
+    while !self.over?
       self.board.display
       self.turn
     end
+
     puts (self.draw? ? "Cat's Game!" : "Congratulations #{self.winner}!")
   end
 
@@ -93,6 +94,6 @@ class Game
     end
     @player_1 = player_1 if player_1
     @player_2 = player_2 if player_2
-    binding.pry
+
   end
 end
