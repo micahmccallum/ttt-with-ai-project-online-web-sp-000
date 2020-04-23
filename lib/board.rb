@@ -1,6 +1,10 @@
 class Board
   attr_accessor :cells
 
+  CORNERS = [0, 2, 6, 8]
+  EDGES = [1, 3, 5, 7]
+  CENTER = "4"
+
   def initialize
     @cells = Array.new(9, " ")
   end
@@ -40,5 +44,9 @@ class Board
 
   def update(input, player)
     @cells[input.to_i - 1] = player.token
+  end
+
+  def empty?
+    @cells.all? {|cell| cell == " "}
   end
 end
