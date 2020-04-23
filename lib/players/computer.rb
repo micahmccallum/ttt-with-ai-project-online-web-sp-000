@@ -34,7 +34,7 @@ module Players
       input = false
       Game::WIN_COMBINATIONS.each do |combo|
         matching = combo.find_all {|index| @board.cells[index] == token}
-
+        binding.pry
 
         input = combo.find {|index| combo[index] == " "} if matching.count == 2
 
