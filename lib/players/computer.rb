@@ -33,14 +33,14 @@ module Players
     def two_in_a_row?(token)
       input = false
       Game::WIN_COMBINATIONS.each do |combo|
-        matching = combo.find_all {|position| @board[position] == token}
-        input = combo.find {|position| @board[position] == " "} if matching.count == 2
+        matching = combo.find_all {|position| @board.cells[position] == token}
+        input = combo.find {|position| @board.cells[position] == " "} if matching.count == 2
       end
       input
     end
 
     def opponent_token
-      ["X", "O"].reject(@token)
+      ["X", "O"].reject {|token| token == @token}
     end
 
     def to_input(index)

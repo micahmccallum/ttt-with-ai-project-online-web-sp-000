@@ -56,8 +56,43 @@ class Game
 
   def play
     while !self.won? && !self.over?
+      self.board.display
       self.turn
     end
     puts (self.draw? ? "Cat's Game!" : "Congratulations #{self.winner}!")
+  end
+
+  def start
+    self.game_init
+    self.play
+  end
+
+  def game_init
+    puts "Welcome to Ultimate Tic-Tac-Toe!"
+    puts "Please choose a game mode:"
+    puts "Choose 0 for two computer players."
+    puts "Choose 1 for one human player and one computer player."
+    puts "Choose 2 for 2 human players."
+    input = gets.strip
+    case input
+    when "0"
+      player_1 = Players::Computer.new(Player::TOKENS[0])
+      player_2 = Players::Computer.new(Player::TOKENS[1])
+    when "1"
+      puts "Do you want to play first?  Enter 1 for yes and 0 for no."
+      answer = gets.strip
+      if answer = "0"
+        player_2 = Players::Computer.new(Player::TOKENS[1])
+      else
+        player_1 = Players::Computer.new(Player::TOKENS[0])
+      end
+    when "2"
+        true
+    else
+      game_init
+    end
+    @player_1 = player_1 if player_1
+    @player_2 = player_2 if player_2
+    binding.pry
   end
 end
