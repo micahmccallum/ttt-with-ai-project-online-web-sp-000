@@ -6,10 +6,10 @@ module Players
 
       if first_move?
         index = Board::CORNERS.sample
-      elsif two_in_a_row?(@token)
-        index = two_in_a_row?(@token)
-      elsif two_in_a_row?(opponent_token)
-        index = two_in_a_row?(opponent_token)
+      # elsif !(two_in_a_row?(@token) == false)
+      #   index = two_in_a_row?(@token)
+      # elsif !(two_in_a_row?(opponent_token) == false)
+      #   index = two_in_a_row?(opponent_token)
       elsif false #check for opportunity to fork
         #play to fork
       elsif false# If there is only one possible fork for the opponent, the player should block it. Otherwise, the player should block all forks in any way that simultaneously allows them to create two in a row. Otherwise, the player should create a two in a row to force the opponent into defending, as long as it doesn't result in them creating a fork. For example, if "X" has two opposite corners and "O" has the center, "O" must not play a corner in order to win.
@@ -34,10 +34,7 @@ module Players
       input = false
       Game::WIN_COMBINATIONS.each do |combo|
         matching = combo.find_all {|index| @board.cells[index] == token}
-        binding.pry
-
         input = combo.find {|index| combo[index] == " "} if matching.count == 2
-
       end
       input
     end

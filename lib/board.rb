@@ -34,7 +34,8 @@ class Board
   end
 
   def turn_count
-    (@cells.find_all {|cell| Player::TOKENS.include?(cell)}).count
+    binding.pry
+    (9 - @cells.count(" "))
   end
 
   def valid_move?(input)
