@@ -3,7 +3,7 @@ class Board
 
   CORNERS = [0, 2, 6, 8]
   EDGES = [1, 3, 5, 7]
-  CENTER = "4"
+  CENTER = 4
 
   def initialize
     @cells = Array.new(9, " ")
@@ -34,8 +34,8 @@ class Board
   end
 
   def turn_count
-    binding.pry
-    (9 - @cells.count(" "))
+
+    (@cells.count - @cells.count(" "))
   end
 
   def valid_move?(input)

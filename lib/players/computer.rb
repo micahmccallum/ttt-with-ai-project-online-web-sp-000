@@ -3,56 +3,33 @@ module Players
 
     def move(board)
       @board = board
+      get_input(@board)
 
-      if first_move?
-        index = Board::CORNERS.sample
-      # elsif !(two_in_a_row?(@token) == false)
-      #   index = two_in_a_row?(@token)
-      # elsif !(two_in_a_row?(opponent_token) == false)
-      #   index = two_in_a_row?(opponent_token)
-      elsif false #check for opportunity to fork
-        #play to fork
-      elsif false# If there is only one possible fork for the opponent, the player should block it. Otherwise, the player should block all forks in any way that simultaneously allows them to create two in a row. Otherwise, the player should create a two in a row to force the opponent into defending, as long as it doesn't result in them creating a fork. For example, if "X" has two opposite corners and "O" has the center, "O" must not play a corner in order to win.
-        #play block
-      elsif false
-        index = 4
-      elsif false#check for opponent corner move
-        #play opposite corner
-      elsif false#play any corner if valid_move
-        index = Board::CORNERS.sample
+    end
+
+    def get_input(board)
+      @board = board
+      @input = nil
+      if @board.turn_count == 0
+        int = [Board::CORNERS.sample, Board::CENTER].sample
+      elsif @board.turn_count == 1
+        @board.taken?("5") ? int = Board::CORNERS.sample : int = Board::CENTER
       else
-        index = Board::EDGES.sample
+        minmax
       end
-      self.to_input(index)
+
     end
 
-    def first_move?
-      @board.empty?
+
+
+
+
+
+    def index_to_input(int)
+
+      (int += 1).to_s if int
     end
 
-    def two_in_a_row?(token)
-      input = false
-      Game::WIN_COMBINATIONS.each do |combo|
-        matching = combo.find_all {|index| @board.cells[index] == token}
-        input = combo.find {|index| combo[index] == " "} if matching.count == 2
-      end
-      input
-    end
 
-    def opponent_token
-      TOKENS.reject {|token| token == @token}
-    end
-
-    def to_input(index)
-      (index + 1).to_s
-    end
-
-    # def fork_opportunity(token)
-    #   @board.each do |cell|
-    #     Game::WIN_COMBINATIONS.each do |combo|
-    #
-    #     end
-    #   end
-    # end
   end
 end

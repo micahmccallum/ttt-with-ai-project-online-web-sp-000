@@ -61,6 +61,7 @@ class Game
     end
 
     puts (self.draw? ? "Cat's Game!" : "Congratulations #{self.winner}!")
+    self.board.display
   end
 
   def start
@@ -82,10 +83,10 @@ class Game
     when "1"
       puts "Do you want to play first?  Enter 1 for yes and 0 for no."
       answer = gets.strip
-      if answer = "0"
-        player_2 = Players::Computer.new(Player::TOKENS[1])
-      else
+      if answer == "0"
         player_1 = Players::Computer.new(Player::TOKENS[0])
+      else
+        player_2 = Players::Computer.new(Player::TOKENS[1])
       end
     when "2"
         true
