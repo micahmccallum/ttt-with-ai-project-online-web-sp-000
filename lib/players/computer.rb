@@ -27,36 +27,30 @@ module Players
     end
 
     def can_play_two_in_a_row?
-      # Game::WIN_COMBINATIONS.each do |combo|
-      #   token_count = 0
-      #   opponent_token_count = 0
-      #   combo.each do |cell|
-      #     combo_cell = @board.cells[cell]
-      #     if combo_cell == token
-      #       token_count += 1
-      #     elsif combo_cell == @opponent_token
-      #       opponent_token_count += 1
-      #     end
-      #   end
-      #   if token_count > 0 && opponent_token_count == 0
-      #     @two_in_a_row_combo = combo
-      #     true
-      #   else
-      #     false
-      #   end
-      # end
-    end
-
-    def can_win?
       Game::WIN_COMBINATIONS.each do |combo|
-        tokens = []
+        temp_array = []
         combo.each do |position|
           tokens << @board.cells[position]
         end
-        tokens.sort!
-        puts tokens
-        binding.pry
-        if tokens == [" ", "#{token}", "#{token}"]
+        temp_array.sort!
+        if temp_array == [" ", " ", "#{token}"]
+          @two_in_a_row_combo = combo
+          true
+        else
+          false
+        end
+      end
+    end
+
+
+    def can_win?
+      Game::WIN_COMBINATIONS.each do |combo|
+        temp_array = []
+        combo.each do |position|
+          tokens << @board.cells[position]
+        end
+        temp_array.sort!
+        if temp_array == [" ", "#{token}", "#{token}"]
           @win_combo = combo
           true
         else
@@ -66,7 +60,6 @@ module Players
     end
 
     def can_block?
-
       Game::WIN_COMBINATIONS.each do |combo|
         temp_array = []
         combo.each do |position|
