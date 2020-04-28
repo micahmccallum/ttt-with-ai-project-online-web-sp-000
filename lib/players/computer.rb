@@ -45,17 +45,18 @@ module Players
     def can_win?
       @win_combo = false
       Game::WIN_COMBINATIONS.each do |combo|
-        token_count = 0
         tokens = []
         combo.each do |position|
           tokens << @board.cells[position]
-          # token_count += 1 if @board.cells[position] == token
-          # tokens << @board.cells[position]
         end
         tokens.sort!
-        @win_combo = combo if tokens == [" ", token, token]
+        if tokens == [" ", token, token]
+          @win_combo = combo
+          true
+        else
+          false
+        end
       end
-      @win_combo ? true : false
     end
 
     def can_block?
