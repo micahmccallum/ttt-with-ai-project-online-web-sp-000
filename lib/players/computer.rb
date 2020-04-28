@@ -66,7 +66,7 @@ module Players
         temp_array.sort!
         @block_combo = combo if temp_arry == [" ", @opponent_token, @opponent_token]
       end
-          
+
       #   opponent_moves = []
       #   blank_cells = []
       #   combo.each do |position|
