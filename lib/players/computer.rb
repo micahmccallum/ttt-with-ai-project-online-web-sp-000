@@ -17,7 +17,7 @@ module Players
         int = win
       elsif can_block? == true
         int = block
-      elsif can_play_two_in_a_row?
+      elsif can_play_two_in_a_row? == true
         int = two_in_a_row
       else
         int = [Board::CORNERS.sample, Board::EDGES.sample].sample
