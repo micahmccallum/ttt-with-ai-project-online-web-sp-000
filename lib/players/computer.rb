@@ -20,6 +20,7 @@ module Players
       elsif can_play_two_in_a_row? == true
         int = two_in_a_row
       else
+        puts "anymove"
         int = [Board::CORNERS.sample, Board::EDGES.sample].sample
       end
       input = index_to_input(int) if int
