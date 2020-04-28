@@ -55,7 +55,7 @@ module Players
           tokens << @board.cells[position]
         end
         tokens.sort!
-        if tokens == [" ", token, token]
+        if tokens == [" ", "#{token}", "#{token}"]
           @win_combo = combo
           true
         else
@@ -72,7 +72,7 @@ module Players
           temp_array << @board.cells[position]
         end
         temp_array.sort!
-        if temp_array == [" ", @opponent_token, @opponent_token]
+        if temp_array == [" ", "#{@opponent_token}", "#{@opponent_token}"]
           @block_combo = combo
           true
         else
