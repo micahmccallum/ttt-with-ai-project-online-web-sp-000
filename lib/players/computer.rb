@@ -45,7 +45,7 @@ module Players
     def can_win?
       @win_combo = false
       Game::WIN_COMBINATIONS.each do |combo|
-        token_count = []
+        token_count = 0
         tokens = []
         combo.each do |position|
           token_count += 1 if @board.cells[position] == token
