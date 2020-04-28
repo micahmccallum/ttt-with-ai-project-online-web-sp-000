@@ -60,25 +60,19 @@ module Players
     end
 
     def can_block?
-      @block_combo = false
       Game::WIN_COMBINATIONS.each do |combo|
         temp_array = []
         combo.each do |position|
           temp_array << @board.cells[position]
         end
         temp_array.sort!
-        @block_combo = combo if temp_array == [" ", @opponent_token, @opponent_token]
-      end
-
-      #   opponent_moves = []
-      #   blank_cells = []
-      #   combo.each do |position|
-      #     opponent_moves << position if @board.cells[position] == @opponent_token
-      #     blank_cells << position if @board.cells[position] == " "
-      #   end
-      #   @block_combo = combo if opponent_moves.count == 2 && blank_cells.count == 1
-      # end
-      @block_combo ? true : false
+        if temp_array == [" ", @opponent_token, @opponent_token]
+          @block_combo = combo
+          true
+        else
+          false
+        end
+      end      
     end
 
     def two_in_a_row
