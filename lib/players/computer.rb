@@ -30,7 +30,7 @@ module Players
       Game::WIN_COMBINATIONS.each do |combo|
         temp_array = []
         combo.each do |position|
-          tokens << @board.cells[position]
+          temp_array << @board.cells[position]
         end
         temp_array.sort!
         if temp_array == [" ", " ", "#{token}"]
