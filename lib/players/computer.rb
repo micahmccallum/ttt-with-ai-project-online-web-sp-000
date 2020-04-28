@@ -83,7 +83,7 @@ module Players
     end
 
     def win
-      binding.pry
+      
       @win_combo.sample.reject {|position| @board.cells[position] == self.token }.sample
     end
 
