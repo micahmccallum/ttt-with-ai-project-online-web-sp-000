@@ -48,10 +48,12 @@ module Players
         token_count = 0
         tokens = []
         combo.each do |position|
-          token_count += 1 if @board.cells[position] == token
           tokens << @board.cells[position]
+          # token_count += 1 if @board.cells[position] == token
+          # tokens << @board.cells[position]
         end
-        @win_combo = combo if token_count == 2 && tokens.include?(token)
+        tokens.sort!
+        @win_combo = combo if tokens == [" ", token, token] 
       end
       @win_combo ? true : false
     end
@@ -83,7 +85,6 @@ module Players
     end
 
     def win
-
       @win_combo.sample.reject {|position| @board.cells[position] == self.token }.sample
     end
 
