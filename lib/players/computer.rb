@@ -28,6 +28,7 @@ module Players
     end
 
     def can_play_two_in_a_row?
+
       Game::WIN_COMBINATIONS.each do |combo|
         temp_array = []
         combo.each do |position|
@@ -45,19 +46,18 @@ module Players
 
 
     def can_win?
+      @win_combo = false
       Game::WIN_COMBINATIONS.each do |combo|
         temp_array = []
         combo.each do |position|
           temp_array << @board.cells[position]
         end
         temp_array.sort!
-        if temp_array == [" ", "#{token}", "#{token}"]
-          @win_combo = combo
-          true
-        else
-          false
-        end
+        @win_combo = combo if temp_array == [" ", "#{token}", "#{token}"]
+
+
       end
+      @win_combo
     end
 
     def can_block?
