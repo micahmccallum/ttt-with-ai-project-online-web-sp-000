@@ -54,8 +54,6 @@ module Players
         end
         temp_array.sort!
         @win_combo = combo if temp_array == [" ", "#{token}", "#{token}"]
-
-
       end
       @win_combo
     end
