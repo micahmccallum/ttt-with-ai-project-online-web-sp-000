@@ -37,7 +37,6 @@ module Players
         end
         temp_array.sort!
         @two_in_a_row_combo = combo if temp_array == [" ", " ", "#{token}"]
-
       end
       @two_in_a_row_combo
     end
