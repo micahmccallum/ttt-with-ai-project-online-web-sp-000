@@ -53,7 +53,7 @@ module Players
           # tokens << @board.cells[position]
         end
         tokens.sort!
-        @win_combo = combo if tokens == [" ", token, token] 
+        @win_combo = combo if tokens == [" ", token, token]
       end
       @win_combo ? true : false
     end
