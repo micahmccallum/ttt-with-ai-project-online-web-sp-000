@@ -21,7 +21,6 @@ module Players
       elsif self.can_play_two_in_a_row?
         int = self.two_in_a_row
       else
-
         int = [Board::CORNERS.sample, Board::EDGES.sample].sample
       end
       input = index_to_input(int) if int
@@ -29,7 +28,6 @@ module Players
 
     def can_play_two_in_a_row?
       @two_in_a_row = false
-
       Game::WIN_COMBINATIONS.each do |combo|
         temp_array = []
         combo.each do |position|
@@ -62,13 +60,9 @@ module Players
           temp_array << @board.cells[position]
         end
         temp_array.sort!
-        if temp_array == [" ", "#{@opponent_token}", "#{@opponent_token}"]
-          @block_combo = combo
-          true
-        else
-          false
-        end
+        @block_combo = combo if temp_array == [" ", "#{@opponent_token}", "#{@opponent_token}"]
       end
+      @block_combo
     end
 
     def two_in_a_row
