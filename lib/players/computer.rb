@@ -43,7 +43,6 @@ module Players
     end
 
     def can_win?
-      @win_combo = false
       Game::WIN_COMBINATIONS.each do |combo|
         tokens = []
         combo.each do |position|
