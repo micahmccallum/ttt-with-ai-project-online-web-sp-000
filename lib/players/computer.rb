@@ -9,6 +9,7 @@ module Players
 
     def get_input
       @input = nil
+      int = nil
       if @board.turn_count == 0
         int = [Board::CORNERS.sample, Board::CENTER].sample
       elsif @board.turn_count == 1
