@@ -20,7 +20,7 @@ module Players
       elsif self.can_play_two_in_a_row?
         int = self.two_in_a_row
       else
-        
+
         int = [Board::CORNERS.sample, Board::EDGES.sample].sample
       end
       input = index_to_input(int) if int
