@@ -13,11 +13,11 @@ module Players
         int = [Board::CORNERS.sample, Board::CENTER].sample
       elsif @board.turn_count == 1
         @board.taken?("5") ? int = Board::CORNERS.sample : int = Board::CENTER
-      elsif can_win? == true
+      elsif can_win?
         int = win
-      elsif can_block? == true
+      elsif can_block?
         int = block
-      elsif can_play_two_in_a_row? == true
+      elsif can_play_two_in_a_row?
         int = two_in_a_row
       else
         puts "anymove"
