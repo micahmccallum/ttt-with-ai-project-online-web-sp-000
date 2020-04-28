@@ -55,6 +55,7 @@ module Players
         end
         tokens.sort!
         puts tokens
+        binding.pry
         if tokens == [" ", "#{token}", "#{token}"]
           @win_combo = combo
           true
