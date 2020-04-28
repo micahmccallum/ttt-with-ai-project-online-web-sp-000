@@ -13,7 +13,7 @@ module Players
         int = [Board::CORNERS.sample, Board::CENTER].sample
       elsif @board.turn_count == 1
         @board.taken?("5") ? int = Board::CORNERS.sample : int = Board::CENTER
-      elsif can_win?
+      elsif can_win? == true
         int = win
       elsif can_block?
         int = block
