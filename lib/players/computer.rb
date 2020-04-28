@@ -53,6 +53,7 @@ module Players
     end
 
     def can_block?
+      @block_combo = false
       Game::WIN_COMBINATIONS.each do |combo|
         temp_array = []
         combo.each do |position|
