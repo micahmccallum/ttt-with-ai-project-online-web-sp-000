@@ -27,7 +27,7 @@ module Players
     end
 
     def can_play_two_in_a_row?
-      @two_in_a_row = false
+      @two_in_a_row_combo = false
       Game::WIN_COMBINATIONS.each do |combo|
         temp_array = []
         combo.each do |position|
@@ -38,7 +38,6 @@ module Players
       end
       @two_in_a_row_combo
     end
-
 
     def can_win?
       @win_combo = false
