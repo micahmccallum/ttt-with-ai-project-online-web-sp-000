@@ -26,6 +26,7 @@ module Players
     end
 
     def can_play_two_in_a_row?
+      puts "2 in a row"
       Game::WIN_COMBINATIONS.each do |combo|
         token_count = 0
         opponent_token_count = 0
@@ -47,6 +48,7 @@ module Players
     end
 
     def can_win?
+      puts "can_win"
       Game::WIN_COMBINATIONS.each do |combo|
         tokens = []
         combo.each do |position|
@@ -63,6 +65,7 @@ module Players
     end
 
     def can_block?
+      puts "block"
       Game::WIN_COMBINATIONS.each do |combo|
         temp_array = []
         combo.each do |position|
