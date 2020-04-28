@@ -64,7 +64,7 @@ module Players
           temp_array << @board.cells[position]
         end
         temp_array.sort!
-        @block_combo = combo if temp_arry == [" ", @opponent_token, @opponent_token]
+        @block_combo = combo if temp_array == [" ", @opponent_token, @opponent_token]
       end
 
       #   opponent_moves = []
