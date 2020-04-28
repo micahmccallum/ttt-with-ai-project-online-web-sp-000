@@ -65,15 +65,15 @@ module Players
       @block_combo
     end
 
-    def two_in_a_row        
+    def two_in_a_row
       @two_in_a_row_combo.reject {|cell| @board.cells[cell] == self.token}.sample
     end
 
-    def win      
+    def win
       @win_combo.sample.reject {|position| @board.cells[position] == self.token }.sample
     end
 
-    def block      
+    def block
       @block_combo.find {|cell| @board.cells[cell] == " "}
     end
 
@@ -84,6 +84,6 @@ module Players
     def opponent_token
       Player::TOKENS.find {|toquen| toquen != token}
     end
-    
+
   end
 end
