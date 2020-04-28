@@ -37,9 +37,13 @@ module Players
             opponent_token_count += 1
           end
         end
-        @two_in_a_row_combo = combo if token_count > 0 && opponent_token_count == 0
-         end
-      @two_in_a_row_combo ? true : false
+        if token_count > 0 && opponent_token_count == 0
+          @two_in_a_row_combo = combo
+          true
+        else
+          false
+        end
+      end      
     end
 
     def can_win?
