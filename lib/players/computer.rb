@@ -15,7 +15,7 @@ module Players
         @board.taken?("5") ? int = Board::CORNERS.sample : int = Board::CENTER
       elsif can_win? == true
         int = win
-      elsif can_block?
+      elsif can_block? == true
         int = block
       elsif can_play_two_in_a_row?
         int = two_in_a_row
