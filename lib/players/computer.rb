@@ -43,7 +43,7 @@ module Players
         else
           false
         end
-      end      
+      end
     end
 
     def can_win?
