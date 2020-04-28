@@ -72,7 +72,7 @@ module Players
         else
           false
         end
-      end      
+      end
     end
 
     def two_in_a_row
