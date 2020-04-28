@@ -53,7 +53,7 @@ module Players
         end
         @win_combo = combo if token_count == 2 && tokens.include?(token)
       end
-      @win_combo > 1 ? true : false
+      @win_combo ? true : false
     end
 
     def can_block?
